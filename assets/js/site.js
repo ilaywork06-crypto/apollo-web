@@ -579,10 +579,11 @@
         submit.disabled = true;
         submit.textContent = 'שולח...';
         try {
+          // Form-encoded, not JSON: a JSON body needs a CORS preflight, which Google Apps Script never answers
           const res = await fetch(SITE.formEndpoint, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify(lead),
+            headers: { Accept: 'application/json' },
+            body: new URLSearchParams({ ...lead, products: products.join(', ') }),
           });
           if (!res.ok) throw new Error(String(res.status));
           form.reset();

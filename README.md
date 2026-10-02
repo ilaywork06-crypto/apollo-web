@@ -30,8 +30,8 @@ Also:
 
 With `formEndpoint` empty, sending the form opens WhatsApp with the details already written; the
 visitor still taps "send". To receive leads without WhatsApp, point `formEndpoint` at any service
-that accepts a JSON `POST` (Formspree, a Google Apps Script web app, …). The body is
-`{ name, phone, products: [...], note }`.
+that accepts a form `POST` (Formspree, a Google Apps Script web app, …). The fields are `name`,
+`phone`, `products` (comma-separated) and `note`.
 
 ## The sample report
 
